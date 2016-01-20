@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebChat-WebAppTemplete</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+    <meta name="apple-touch-fullscreen" content="YES" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel='stylesheet' href='/stylesheets/wechat-H5.css' />
+    <script src='/javascripts/wechat-H5.js'></script>
+  </head>
+  <body>
+    <ul id='app'>
+      <li>
+        <h1>Page1</h1>
+        <p>test1</p>
+        <button onClick="webchat.movePage(3);">test</button>
+      </li>
+      <li>
+        <h1>Page2</h1>
+        <p>test2</p>
+      </li>
+      <li>
+        <h1>Page3</h1>
+        <p>test3</p>
+      </li>
+      <li>
+        <h1>Page4</h1>
+        <p>test4</p>
+      </li>
+    </ul>
+    <script>
+      var myApp = document.getElementById('app');
+      var webchat = new webchat(myApp, document.body.clientHeight, document.body.clientWidth);
+    </script>
+  </body>
+</html>
