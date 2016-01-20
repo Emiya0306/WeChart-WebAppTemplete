@@ -36,7 +36,7 @@ webchat.prototype.startHandler = function (event) {
 };
 
 webchat.prototype.moveHandler = function (event) {
-  // event.preventDefault();
+  event.preventDefault();
   this.moveTime = Date.now();
   this.moveX = event.touches[0].clientX - this.startX;
   this.moveY = event.touches[0].clientY - this.startY;
@@ -44,12 +44,15 @@ webchat.prototype.moveHandler = function (event) {
 };
 
 webchat.prototype.endHandler = function (event) {
-  // event.preventDefault();
+  event.preventDefault();
   if (this.moveY > 150 && webchat.page > 0) {
     webchat.page --;
+    alert('page--: ' + webchat.page)
   } else if (this.moveY < -150 && webchat.page < webchat.target.children.length - 1) {
     webchat.page ++;
+    alert('page++: ' + webchat.page)
   }
   this.style.transform = 'translate3d(0, ' + (webchat.page * (-webchat.height)) + 'px' + ', 0)';
+  alert(this.style.transform)
   this.endTime = Date.now();
 };
