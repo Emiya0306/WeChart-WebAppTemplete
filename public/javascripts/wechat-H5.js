@@ -31,6 +31,7 @@ webchat.prototype.movePage = function (index) {
 };
 
 webchat.prototype.startHandler = function (event) {
+  event.initEvent()
   this.startTime = Date.now();
   this.startX = event.touches[0].clientX;
   this.startY = event.touches[0].clientY;
@@ -56,4 +57,7 @@ webchat.prototype.endHandler = function (event) {
     webchat.page ++;
   }
   this.style.webkitTransform = 'translate3d(0, ' + (webchat.page * (-webchat.height)) + 'px' + ', 0)';
+  if(event && event.preventDefault){
+    window.event.returnValue = true;
+  }
 };
