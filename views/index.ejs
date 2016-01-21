@@ -7,23 +7,36 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <link rel='stylesheet' href='/stylesheets/wechat-H5.css' />
     <script src='/javascripts/wechat-H5.js'></script>
+    <style>
+      #test {
+        height: 100px;
+        width: 100px;
+        background-color: gray;
+        -webkit-transform: translate3d(50px, 0, 0);
+        -webkit-transition: -webkit-transform 0.2s ease-out;
+      }
+    </style>
   </head>
   <body>
     <ul id='app'>
-      <li>
+      <li style='background: red;'>
         <h1>Page1</h1>
         <p>test1</p>
+        <div id="test">
+
+        </div>
         <button onClick="webchat.movePage(3);">test</button>
+        <button onClick="test();">move</button>
       </li>
-      <li>
+      <li style='background: yellow;'>
         <h1>Page2</h1>
         <p>test2</p>
       </li>
-      <li>
+      <li style='background: blue;'>
         <h1>Page3</h1>
         <p>test3</p>
       </li>
-      <li>
+      <li style='background: green;'>
         <h1>Page4</h1>
         <p>test4</p>
       </li>
@@ -31,6 +44,10 @@
     <script>
       var myApp = document.getElementById('app');
       var webchat = new webchat(myApp, document.body.clientHeight, document.body.clientWidth);
+      var test = function (event) {
+        document.getElementById('test').style.transform = 'translate3d(100px, 0, 0)';
+        document.getElementById('test').style.transition = 'transform 0.2s ease-out';
+      }
     </script>
   </body>
 </html>

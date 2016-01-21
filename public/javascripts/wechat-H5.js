@@ -3,6 +3,7 @@ function webchat (app, height, width) {
   this.height = height;
   this.width = width;
   this.page = 0;
+  webchat.moved = false;
   this.init();
 }
 
@@ -25,8 +26,8 @@ webchat.prototype.init = function () {
 };
 
 webchat.prototype.movePage = function (index) {
-  this.page = index;
-  this.target.style.transform = 'translate3d(0, ' + (webchat.page * (-webchat.height)) + 'px' + ', 0)';
+  webchat.page = index;
+  this.target.style.webkitTransform = 'translate3d(0, ' + (webchat.page * (-webchat.height)) + 'px' + ', 0)';
 };
 
 webchat.prototype.startHandler = function (event) {
@@ -40,19 +41,19 @@ webchat.prototype.moveHandler = function (event) {
   this.moveTime = Date.now();
   this.moveX = event.touches[0].clientX - this.startX;
   this.moveY = event.touches[0].clientY - this.startY;
-  this.style.transform = 'translate3d(0, ' + (webchat.page * (-webchat.height) + this.moveY) + 'px' + ', 0)';
+  this.style.webkitTransform = 'translate3d(0, ' + (webchat.page * (-webchat.height) + this.moveY) + 'px' + ', 0)';
+  webchat.moved = true;
 };
 
 webchat.prototype.endHandler = function (event) {
-  event.preventDefault();
+  this.endTime = Date.now();
+  if (webchat.moved) {
+    event.preventDefault();
+  }
   if (this.moveY > 150 && webchat.page > 0) {
     webchat.page --;
-    alert('page--: ' + webchat.page)
   } else if (this.moveY < -150 && webchat.page < webchat.target.children.length - 1) {
     webchat.page ++;
-    alert('page++: ' + webchat.page)
   }
-  this.style.transform = 'translate3d(0, ' + (webchat.page * (-webchat.height)) + 'px' + ', 0)';
-  alert(this.style.transform)
-  this.endTime = Date.now();
+  this.style.webkitTransform = 'translate3d(0, ' + (webchat.page * (-webchat.height)) + 'px' + ', 0)';
 };
