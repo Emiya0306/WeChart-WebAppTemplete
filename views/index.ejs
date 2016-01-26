@@ -5,8 +5,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
     <meta name='apple-touch-fullscreen' content='YES' />
     <meta name='apple-mobile-web-app-status-bar-style' content='black' />
-    <link rel='stylesheet' href='/stylesheets/wechat-H5.css' />
-    <script src='/javascripts/wechat-H5.js'></script>
+    <link rel='stylesheet' href='/stylesheets/wechat-H50.css' />
+    <script src='/javascripts/wechat-H50.js'></script>
     <style>
       #test {
         height: 100px;
@@ -27,8 +27,7 @@
         <h1>Page1</h1>
         <p>这是一个CSS3动画</p>
         <div id="test"></div>
-        <button onClick="webchat.changePage(3);">page4</button>
-        <button onClick="test();">move box</button>
+        <button onClick="controller.changePage(3);">page4</button>
       </li>
       <li style='background: yellow;'>
         <h1>Page2</h1>
@@ -41,23 +40,23 @@
       <li style='background: green;'>
         <h1>Page4</h1>
         <p>test4</p>
-        <button onClick="webchat.changePage(0);">page1</button>
+        <button onClick="controller.changePage(0);">page1</button>
       </li>
     </ul>
     <script>
-      var moved = false;
-      var myApp = document.getElementById('app');
-      // var _webchat = new webchat(myApp, document.body.clientHeight, document.body.clientWidth, 'touchmove', 'cut-in' ,'x');
-      var webchat = new webchat(myApp, document.body.clientHeight, document.body.clientWidth, 'touchmove', 'fade-out' ,'x');
-      var test = function (event) {
-        if (!moved) {
-          document.getElementById('test').style.webkitTransform = 'translate3d(200px, 0, 0)';
-          moved = true;
-        } else {
-          document.getElementById('test').style.webkitTransform = 'translate3d(0, 0, 0)';
-          moved = false;
-        }
-      }
+      // var controller = new webchat({
+      //   target: document.getElementById('app'),
+      //   method: 'touchmove',
+      //   effect: 'cut-in'
+      // });
+
+      var controller = new webchat({
+        target: document.getElementById('app'),
+        method: 'touchmove',
+        effect: 'fade-out'
+      });
+
+      console.log(controller);
     </script>
   </body>
 </html>
